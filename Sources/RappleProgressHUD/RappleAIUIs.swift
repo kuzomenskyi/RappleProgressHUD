@@ -135,7 +135,7 @@ extension RappleActivityIndicatorView {
         contentSqure?.layer.masksToBounds = true
         contentSqure?.center = keyWindow.center
         backgroundView?.addSubview(contentSqure!)
-        backgroundView?.sendSubviewToBack(contentSqure!)
+        backgroundView?.sendSubview(toBack: contentSqure!)
         
         completionPoint = activityIndicator!.center
         completionPoint.x = contentSqure!.center.x
@@ -251,7 +251,12 @@ extension RappleActivityIndicatorView {
         strokeEnd.fromValue = 0.0
         strokeEnd.toValue = 1.0
         strokeEnd.duration = 1.0
-        strokeEnd.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        
+#if swift(>=4.2)
+        strokeEnd.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+#else
+        strokeEnd.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+#endif
         
         let endGroup = CAAnimationGroup()
         endGroup.duration = 1.3
@@ -263,7 +268,12 @@ extension RappleActivityIndicatorView {
         strokeStart.fromValue = 0.0
         strokeStart.toValue = 1.0
         strokeStart.duration = 1.0
-        strokeStart.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        
+#if swift(>=4.2)
+        strokeStart.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+#else
+        strokeStart.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+#endif
         
         let startGroup = CAAnimationGroup()
         startGroup.duration = 1.3
