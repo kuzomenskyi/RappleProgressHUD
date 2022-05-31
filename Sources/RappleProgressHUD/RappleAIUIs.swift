@@ -78,7 +78,14 @@ extension RappleActivityIndicatorView {
         var c = keyWindow.center; c.y -= cd
         
         // add activity indicator
-        activityIndicator = UIActivityIndicatorView(style: .whiteLarge)
+        activityIndicator = UIActivityIndicatorView()
+        
+        if #available(iOS 13.0, *) {
+            activityIndicator?.activityIndicatorViewStyle = .large
+        } else {
+            activityIndicator?.activityIndicatorViewStyle = .whiteLarge
+        }
+        
         activityIndicator?.color = getColor(key: RappleTintColorKey)
         activityIndicator?.startAnimating()
         backgroundView?.addSubview(activityIndicator!)
