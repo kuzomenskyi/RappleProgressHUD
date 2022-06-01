@@ -81,9 +81,9 @@ extension RappleActivityIndicatorView {
         activityIndicator = UIActivityIndicatorView()
         
         if #available(iOS 13.0, *) {
-            activityIndicator?.activityIndicatorViewStyle = .large
+            activityIndicator?.style = .large
         } else {
-            activityIndicator?.activityIndicatorViewStyle = .whiteLarge
+            activityIndicator?.style = .whiteLarge
         }
         
         activityIndicator?.color = getColor(key: RappleTintColorKey)
@@ -135,7 +135,7 @@ extension RappleActivityIndicatorView {
         contentSqure?.layer.masksToBounds = true
         contentSqure?.center = keyWindow.center
         backgroundView?.addSubview(contentSqure!)
-        backgroundView?.sendSubview(toBack: contentSqure!)
+        backgroundView?.sendSubviewToBack(contentSqure!)
         
         completionPoint = activityIndicator!.center
         completionPoint.x = contentSqure!.center.x
